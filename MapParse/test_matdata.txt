@@ -1,0 +1,80 @@
+{
+	{
+		mapID="1",
+
+		map_wide=
+		{
+			[ width="10", height="10"]
+		},
+
+		map_data = 
+		{
+			0, 0, 1
+			0, 0, 1
+			1, 1, 1
+		},
+
+		object_data = 
+		{
+			[ id="1", object="", name="", x="100", y="100", width="100", height="100" ],
+			[ id="2", object="", name="", x="100", y="100", width="100", height="100" ],
+			[ id="3", object="", name="", x="100", y="100", width="100", height="100" ],
+			[ id="4", object="", name="", x="100", y="100", width="100", height="100" ] ,
+		}
+	},
+	{
+		mapID="2",
+
+		map_wide=
+		{
+			width="10",
+			height="10",
+		},
+
+		map_data = 
+		{
+			0, 0, 1
+			0, 0, 1
+			1, 1, 1
+		},
+
+		object_data = 
+		{
+			[ id="1", object="", name="", x="100", y="100", width="100", height="100" ],
+			[ id="2", object="", name="", x="100", y="100", width="100", height="100" ],
+			[ id="3", object="", name="", x="100", y="100", width="100", height="100" ],
+			[ id="4", object="", name="", x="100", y="100", width="100", height="100" ] ,
+		}
+	}
+}
+
+< Root > := { < MapData > },
+< MapData > := { < map >+ }
+< map > := mapID | width | height | map_data{ < parse_map > } | object_data{ [ < parse_object > ] }
+< parse_map > := < data >
+< parse_object > := id | object | name | x | y | width | height
+< data > := [0-9]+
+
+parse
+{
+	mapParse
+	{
+		mapdataParse
+	},
+	{
+		objdataParse
+	}
+}
+
+[
+	[
+		[1],
+		[10, 10],
+		[1, 2, 3, 4]
+		[
+			[1, ],
+			[]
+		]
+		
+	]
+]
