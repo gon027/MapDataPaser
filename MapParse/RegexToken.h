@@ -13,7 +13,11 @@ namespace MapPaser {
 
 		Token getToken();
 
+		bool isEof();
+
 	private:
 		std::string str;
+		int strSize;
+		int position;
 	};
 }

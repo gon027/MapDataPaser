@@ -6,7 +6,7 @@
 #include "Token.h"
 #include "RegexToken.h"
 
-void Main() {
+std::string readMapFile() {
 	std::fstream file("test_matdata.txt");
 	if (!file) {
 		std::cout << "Read Error" << std::endl;
@@ -18,20 +18,19 @@ void Main() {
 		str += line;
 	}
 
-	std::cout << str << std::endl;
+	// std::cout << str << std::endl;
+
+	return str;
 }
 
 
 int main()
-{
-	//Main();
-
-	//auto t = getToken();
-	//std::cout << t.data << std::endl;
-	
-	MapPaser::RegexToken rt{ "{ aaa }" };
-	auto t = rt.getToken();
-	std::cout << (int)t.tokenType << " : " << t.data << std::endl;
+{	
+	MapPaser::RegexToken rt{ "{ Width=100 }" };
+	while (rt.isEof()) {
+		auto t = rt.getToken();
+		std::cout << (int)t.tokenType << " : " << t.data << std::endl;
+	}
 
 
 	return 0;

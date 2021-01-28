@@ -14,6 +14,7 @@ namespace MapPaser {
 		static std::vector<std::regex> regexs
 		{
 			std::regex("^(\\s|\\t)"),  // ‹ó”’‚©ƒ^ƒu
+			std::regex("^\\d+"),       // ”š
 			std::regex("^\\{"),
 			std::regex("^\\}"),
 			std::regex("^\\["),
@@ -65,6 +66,8 @@ namespace MapPaser {
 
 	RegexToken::RegexToken(const std::string& _str)
 		: str(_str)
+		, strSize(_str.size())
+		, position(0)
 	{
 	}
 
@@ -78,19 +81,18 @@ namespace MapPaser {
 		for (size_t i{ 0 }; i < regexs.size(); ++i) {
 			auto flag = std::regex_search(str, sm, regexs[i]);
 			if (flag) {
-
-				str = str.substr(sm.length());
-
-				std::cout << sm.length() << std::endl;
-
 				auto token = sm.str();
-
-				std::cout << str << std::endl;
-
+				str = str.substr(sm.length());
+				position += sm.length();
 				return { getTokenType(token), token };
 			}
 		}
 
 		return { MapPaser::TokenType::None, "None" };
+	}
+
+	bool RegexToken::isEof()
+	{
+		return position < strSize;
 	}
 }

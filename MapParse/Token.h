@@ -9,7 +9,8 @@ namespace MapPaser {
 	/// </summary>
 	enum class TokenType : unsigned int {
 		None,
-		Space,
+		Space,           // 空白
+		Number,          // 数字
 		LeftHookBrack,   // 左鉤括弧
 		RightHookBrack,  // 右鉤括弧
 		LeftBrackets,    // 左括弧
@@ -20,13 +21,13 @@ namespace MapPaser {
 		MapObject,       // マップのオブジェクト
 		Comma,           // カンマ
 		Equal,           // イコール 
-		Width,
-		Height,
-		Id,
-		Object,
-		Name,
-		X,
-		Y
+		Width,           // 幅 
+		Height,          // 高さ
+		Id,              // id
+		Object,          // オブジェクト
+		Name,            // オブジェクトの名前
+		X,               // x座標 
+		Y,                // y座標
 	};
 
 	/// <summary>
