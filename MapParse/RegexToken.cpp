@@ -19,19 +19,19 @@ namespace MapPaser {
 			std::regex("^\\}"),
 			std::regex("^\\["),
 			std::regex("^\\]"),
-			std::regex("^mapId"),
+			std::regex("^mapID"),
 			std::regex("^mapWide"),
 			std::regex("^mapData"),
 			std::regex("^mapObject"),
 			std::regex("^,"),
 			std::regex("^="),
-			std::regex("^Width"),
-			std::regex("^Height"),
-			std::regex("^Id"),
-			std::regex("^Object"),
-			std::regex("^Name"),
-			std::regex("^X"),
-			std::regex("^Y"),
+			std::regex("^width"),
+			std::regex("^height"),
+			std::regex("^id"),
+			std::regex("^object"),
+			std::regex("^name"),
+			std::regex("^x"),
+			std::regex("^y"),
 		};
 
 		/// <summary>
@@ -41,6 +41,8 @@ namespace MapPaser {
 		/// <returns> •ÏŠ·‚³‚ê‚½TokenType </returns>
 		MapPaser::TokenType getTokenType(const std::string& _token) {
 			static std::unordered_map<std::string, MapPaser::TokenType> tokenMap{
+				{" ",         MapPaser::TokenType::Space},
+				{"	",        MapPaser::TokenType::Space},
 				{"{",         MapPaser::TokenType::LeftHookBrack},
 				{"}",         MapPaser::TokenType::RightHookBrack},
 				{"[",         MapPaser::TokenType::LeftBrackets},
@@ -51,13 +53,13 @@ namespace MapPaser {
 				{"mapObject", MapPaser::TokenType::MapObject},
 				{",",         MapPaser::TokenType::Comma},
 				{"=",         MapPaser::TokenType::Equal},
-				{"Width",     MapPaser::TokenType::Width},
-				{"Height",    MapPaser::TokenType::Height},
-				{"ID",        MapPaser::TokenType::Id},
-				{"Object",    MapPaser::TokenType::Object},
-				{"Name",      MapPaser::TokenType::Name},
-				{"X",         MapPaser::TokenType::X},
-				{"Y",         MapPaser::TokenType::Y},
+				{"width",     MapPaser::TokenType::Width},
+				{"height",    MapPaser::TokenType::Height},
+				{"id",        MapPaser::TokenType::Id},
+				{"object",    MapPaser::TokenType::Object},
+				{"name",      MapPaser::TokenType::Name},
+				{"x",         MapPaser::TokenType::X},
+				{"y",         MapPaser::TokenType::Y},
 			};
 
 			return tokenMap[_token];
@@ -84,6 +86,7 @@ namespace MapPaser {
 				auto token = sm.str();
 				str = str.substr(sm.length());
 				position += sm.length();
+
 				return { getTokenType(token), token };
 			}
 		}

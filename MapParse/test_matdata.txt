@@ -54,27 +54,3 @@
 < parse_map > := < data >
 < parse_object > := id | object | name | x | y | width | height
 < data > := [0-9]+
-
-parse
-{
-	mapParse
-	{
-		mapdataParse
-	},
-	{
-		objdataParse
-	}
-}
-
-[
-	[
-		[1],
-		[10, 10],
-		[1, 2, 3, 4]
-		[
-			[1, ],
-			[]
-		]
-		
-	]
-]

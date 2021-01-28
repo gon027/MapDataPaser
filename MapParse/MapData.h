@@ -23,7 +23,7 @@ namespace MapPaser {
 	/// <summary>
 	/// マップのデータの配列
 	/// </summary>
-	struct MapData {
+	struct MapField {
 		std::vector<int> data;
 	};
 
@@ -46,14 +46,15 @@ namespace MapPaser {
 		std::vector<MapInfo> objects;
 	};
 
-	class Map {
+	class MapData {
 	public:
-
+		MapData(MapID _mapId, MapSize _mapSize, MapField _mapField, MapObject _mapObject);
+		~MapData();
 
 	private:
 		MapID mapID;
 		MapSize mapSize;
-		MapData mapData;
+		MapField mapField;
 		MapObject mapObject;
 	};
 }
