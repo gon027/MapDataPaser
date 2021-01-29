@@ -1,7 +1,7 @@
 #include "MapData.h"
 #include <iostream>
 
-namespace MapPaser {
+namespace MapParser {
 
 	MapData::MapData(MapID _mapId, MapSize _mapSize, MapField _mapField, MapObject _mapObject)
 		: mapID(_mapId)

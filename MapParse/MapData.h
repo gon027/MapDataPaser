@@ -3,7 +3,7 @@
 #include <string>
 #include <vector>
 
-namespace MapPaser {
+namespace MapParser {
 
 	/// <summary>
 	/// ƒ}ƒbƒvID

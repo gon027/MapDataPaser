@@ -2,7 +2,7 @@
 
 #include <string>
 
-namespace MapPaser {
+namespace MapParser {
 
 	/// <summary>
 	/// トークンのタイプ

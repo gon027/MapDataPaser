@@ -5,7 +5,7 @@
 #include <regex>
 #include <unordered_map>
 
-namespace MapPaser {
+namespace MapParser {
 
 	namespace {
 		/// <summary>
@@ -39,27 +39,27 @@ namespace MapPaser {
 		/// </summary>
 		/// <param name="_token"> ÉgÅ[ÉNÉìÇÃï∂éöóÒ </param>
 		/// <returns> ïœä∑Ç≥ÇÍÇΩTokenType </returns>
-		MapPaser::TokenType getTokenType(const std::string& _token) {
-			static std::unordered_map<std::string, MapPaser::TokenType> tokenMap{
-				{" ",         MapPaser::TokenType::Space},
-				{"	",        MapPaser::TokenType::Space},
-				{"{",         MapPaser::TokenType::LeftHookBrack},
-				{"}",         MapPaser::TokenType::RightHookBrack},
-				{"[",         MapPaser::TokenType::LeftBrackets},
-				{"]",         MapPaser::TokenType::RightBrackets},
-				{"mapID",     MapPaser::TokenType::MapID},
-				{"mapWide",   MapPaser::TokenType::MapWide},
-				{"mapData",   MapPaser::TokenType::MapData},
-				{"mapObject", MapPaser::TokenType::MapObject},
-				{",",         MapPaser::TokenType::Comma},
-				{"=",         MapPaser::TokenType::Equal},
-				{"width",     MapPaser::TokenType::Width},
-				{"height",    MapPaser::TokenType::Height},
-				{"id",        MapPaser::TokenType::Id},
-				{"object",    MapPaser::TokenType::Object},
-				{"name",      MapPaser::TokenType::Name},
-				{"x",         MapPaser::TokenType::X},
-				{"y",         MapPaser::TokenType::Y},
+		MapParser::TokenType getTokenType(const std::string& _token) {
+			static std::unordered_map<std::string, MapParser::TokenType> tokenMap{
+				{" ",         MapParser::TokenType::Space},
+				{"	",        MapParser::TokenType::Space},
+				{"{",         MapParser::TokenType::LeftHookBrack},
+				{"}",         MapParser::TokenType::RightHookBrack},
+				{"[",         MapParser::TokenType::LeftBrackets},
+				{"]",         MapParser::TokenType::RightBrackets},
+				{"mapID",     MapParser::TokenType::MapID},
+				{"mapWide",   MapParser::TokenType::MapWide},
+				{"mapData",   MapParser::TokenType::MapData},
+				{"mapObject", MapParser::TokenType::MapObject},
+				{",",         MapParser::TokenType::Comma},
+				{"=",         MapParser::TokenType::Equal},
+				{"width",     MapParser::TokenType::Width},
+				{"height",    MapParser::TokenType::Height},
+				{"id",        MapParser::TokenType::Id},
+				{"object",    MapParser::TokenType::Object},
+				{"name",      MapParser::TokenType::Name},
+				{"x",         MapParser::TokenType::X},
+				{"y",         MapParser::TokenType::Y},
 			};
 
 			return tokenMap[_token];
@@ -76,7 +76,7 @@ namespace MapPaser {
 	Token RegexToken::getToken()
 	{
 		if (str.size() == 0) {
-			return { MapPaser::TokenType::None, "None" };
+			return { MapParser::TokenType::None, "None" };
 		}
 
 		std::smatch sm;
@@ -91,7 +91,7 @@ namespace MapPaser {
 			}
 		}
 
-		return { MapPaser::TokenType::None, "None" };
+		return { MapParser::TokenType::None, "None" };
 	}
 
 	bool RegexToken::isEof()

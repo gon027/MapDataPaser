@@ -149,8 +149,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MapData.h" />
+    <ClInclude Include="MapParser.h" />
     <ClInclude Include="RegexToken.h" />
     <ClInclude Include="Token.h" />
+    <ClInclude Include="MapFile.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
