@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="MapData.cpp" />
     <ClCompile Include="MapParse.cpp" />
     <ClCompile Include="RegexToken.cpp" />
   </ItemGroup>
