@@ -6,6 +6,7 @@
 #include "Token.h"
 #include "RegexToken.h"
 #include "MapData.h"
+using namespace std;
 
 std::string readMapFile() {
 	std::fstream file("test_matdata.txt");
@@ -22,58 +23,57 @@ std::string readMapFile() {
 	return str;
 }
 
-using namespace std;
-
 MapPaser::MapID getMapID(MapPaser::RegexToken& _rt) {
 	auto t = _rt.getToken();
 
-	if (t.tokenType == MapPaser::TokenType::MapID) {
-		_rt.getToken();
-		auto val = _rt.getToken();
-
-		return { std::stoi( val.data ) };
+	if (t.tokenType != MapPaser::TokenType::MapID) {
+		return { -1 };
 	}
 
-	return { -1 };
+	_rt.getToken();
+	auto val = _rt.getToken();
+
+	return { std::stoi( val.data ) };
 }
 
 MapPaser::MapSize getMapSize(MapPaser::RegexToken& _rt) {
 	auto t = _rt.getToken();
 
+	if (t.tokenType != MapPaser::TokenType::MapWide) {
+		return { 0, 0 };
+	}
+
 	int width = 0;
 	int height = 0;
-	if (t.tokenType == MapPaser::TokenType::MapWide) {
-		_rt.getToken();
 
-		auto token = _rt.getToken();
+	_rt.getToken();
+	auto token = _rt.getToken();
+	if (token.tokenType == MapPaser::TokenType::LeftHookBrack) {
+		token = _rt.getToken();
 
-		if (token.tokenType == MapPaser::TokenType::LeftHookBrack) {
+		if (token.tokenType == MapPaser::TokenType::LeftBrackets) {
 			token = _rt.getToken();
 
-			if (token.tokenType == MapPaser::TokenType::LeftBrackets) {
-				token = _rt.getToken();
-
-				if (token.tokenType == MapPaser::TokenType::Width) {
-					_rt.getToken();
-					auto widthToken = _rt.getToken();
-
-					width = std::stoi(widthToken.data);
-				}
-
+			if (token.tokenType == MapPaser::TokenType::Width) {
 				_rt.getToken();
-				token = _rt.getToken();
-				if (token.tokenType == MapPaser::TokenType::Height) {
-					_rt.getToken();
-					auto heightToken = _rt.getToken();
+				auto widthToken = _rt.getToken();
 
-					height = std::stoi(heightToken.data);
-				}
+				width = std::stoi(widthToken.data);
 			}
+
 			_rt.getToken();
+			token = _rt.getToken();
+			if (token.tokenType == MapPaser::TokenType::Height) {
+				_rt.getToken();
+				auto heightToken = _rt.getToken();
+
+				height = std::stoi(heightToken.data);
+			}
 		}
 		_rt.getToken();
 	}
-
+	_rt.getToken();
+	
 	return { width, height };
 }
 
@@ -83,27 +83,26 @@ MapPaser::MapField getMapData(MapPaser::RegexToken& _rt) {
 	
 	//std::cout << (int)token.tokenType << " : " << token.data << std::endl;
 	if (token.tokenType == MapPaser::TokenType::MapData) {
-		_rt.getToken();
-		
-		std::vector<std::string> result;
-
-		token = _rt.getToken();
-		//std::cout << (int)token.tokenType << " : " << token.data << std::endl;
-
-		while (token.tokenType != MapPaser::TokenType::RightHookBrack)
-		{
-			auto num = _rt.getToken();
-			//std::cout << (int)num.tokenType << " : " << num.data << std::endl;
-			result.emplace_back(num.data);
-
-			//_rt.getToken();
-			token = _rt.getToken();
-		}
-
-		return { result };
+		return {};
 	}
 
-	return { };
+	_rt.getToken();
+		
+	std::vector<std::string> result;
+
+	token = _rt.getToken();
+	//std::cout << (int)token.tokenType << " : " << token.data << std::endl;
+
+	while (token.tokenType != MapPaser::TokenType::RightHookBrack)
+	{
+		auto num = _rt.getToken();
+		//std::cout << (int)num.tokenType << " : " << num.data << std::endl;
+		result.emplace_back(num.data);
+
+		token = _rt.getToken();
+	}
+
+	return { result };
 }
 
 MapPaser::MapObject getMapObject(MapPaser::RegexToken& _rt) {
@@ -172,7 +171,6 @@ MapPaser::MapObject getMapObject(MapPaser::RegexToken& _rt) {
 
 		token = _rt.getToken();
 	}
-	
 
 	return { result };
 }
