@@ -3,11 +3,13 @@
 #include <string>
 #include <regex>
 #include <vector>
+#include <chrono>
 #include "Token.h"
 #include "RegexToken.h"
 #include "MapData.h"
 #include "MapFile.h"
 using namespace std;
+using namespace chrono;
 
 MapParser::MapID getMapID(MapParser::RegexToken& _rt) {
 	auto t = _rt.getToken();
@@ -67,7 +69,7 @@ MapParser::MapField getMapData(MapParser::RegexToken& _rt) {
 	auto token = _rt.getToken();
 	//cout << token.data << endl;
 	
-	std::cout << (int)token.tokenType << " : " << token.data << std::endl;
+	//std::cout << (int)token.tokenType << " : " << token.data << std::endl;
 	if (token.tokenType != MapParser::TokenType::MapData) {
 		return {};
 	}
@@ -191,6 +193,29 @@ MapParser::MapData parseMapData(MapParser::RegexToken& _rt) {
 	return { mapId, mapSize, mapField, mapObject };
 }
 
+std::vector<MapParser::MapData> getMapDataVec(MapParser::RegexToken& _rt) {
+	std::vector<MapParser::MapData> result;
+
+	while (_rt.isEof()) {
+		auto token = _rt.getToken();
+
+		if (token.tokenType != MapParser::TokenType::LeftHookBrack) {
+			return result;
+		}
+
+		while (token.tokenType != MapParser::TokenType::RightHookBrack) {
+			auto data = parseMapData(_rt);
+			//data.debug();
+
+			result.emplace_back(data);
+
+			token = _rt.getToken();
+		}
+	}
+
+	return result;
+}
+
 int main()
 {
 	//MapPaser::RegexToken rt{ "{mapWide=[width=10,height=11]}" };
@@ -201,18 +226,22 @@ int main()
 	};
 	*/
 
+	system_clock::time_point start, end;
+	start = system_clock::now();
+
 	auto a = MapParser::readMapFile("Test.txt");
-	cout << a << endl;
+	//cout << a << endl;
 
 	MapParser::RegexToken rt{ a };
+	auto aa = getMapDataVec(rt);
 
-	while (rt.isEof()) {
-		auto t = rt.getToken();
+	end = system_clock::now();
+	auto elapsed = duration_cast<milliseconds>(end - start).count();
 
-		if (t.tokenType == MapParser::TokenType::LeftHookBrack) {
-			auto aa = parseMapData(rt);
-			aa.debug();
-		}
+	cout << elapsed << endl;
+
+	for (auto& r : aa) {
+		r.debug();
 	}
 
 	return 0;

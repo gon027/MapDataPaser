@@ -10,10 +10,10 @@ namespace MapParser {
 	class RegexToken;
 
 	struct Parser{
-		static MapID parseMapID(RegexToken& _rt);
-		static MapSize parseMapSize(RegexToken& _rt);
-		static MapField parseMapField(RegexToken& _rt);
-		static MapObject parseMapObject(RegexToken& _rt);
-		static MapData parseMapData(RegexToken& _rt);
+		static MapID parseMapID(const RegexToken& _rt);
+		static MapSize parseMapSize(const RegexToken& _rt);
+		static MapField parseMapField(const RegexToken& _rt);
+		static MapObject parseMapObject(const RegexToken& _rt);
+		static MapData parseMapData(const RegexToken& _rt);
 	};
 }
