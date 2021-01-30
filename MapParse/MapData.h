@@ -28,13 +28,11 @@ namespace MapParser {
 	};
 
 	struct MapInfo {
-		int id;
-		std::string object;
 		std::string name;
-		int x;
-		int y;
-		int width;
-		int height;
+		float x;
+		float y;
+		float width;
+		float height;
 	};
 
 	/// <summary>

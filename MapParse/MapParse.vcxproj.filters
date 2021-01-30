@@ -67,5 +67,8 @@
     <Text Include="sample\Test4.txt">
       <Filter>リソース ファイル</Filter>
     </Text>
+    <Text Include="sample\Test5.txt">
+      <Filter>リソース ファイル</Filter>
+    </Text>
   </ItemGroup>
 </Project>

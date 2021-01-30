@@ -13,8 +13,9 @@ namespace MapParser {
 		/// </summary>
 		static std::vector<std::regex> regexs
 		{
-			std::regex("^(\\s|\\t)"),  // 空白かタブ
-			std::regex("^\\d+"),       // 数字
+			std::regex("^(\\s|\\t)"),       // 空白かタブ
+			std::regex("^\\d+(\\.\\d+)?"),  // 整数または小数
+			//std::regex("^\\d+"),          // 数字
 			std::regex("^\\{"),
 			std::regex("^\\}"),
 			std::regex("^\\["),

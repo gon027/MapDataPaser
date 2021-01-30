@@ -1,0 +1,35 @@
+{
+	[
+		mapID = 2,
+
+		mapWide = 
+		{
+			[
+				width = 5,
+				height = 5
+			]
+		},
+
+		mapData =
+		{
+			0, 0, 0, 0, 0,
+			0, 0, 0, 0, 0,
+			0, 0, 0, 0, 0,
+			0, 0, 0, 0, 0,
+			0, 0, 0, 0, 0
+		},
+
+		mapObject = 
+		{
+			[ 
+				name = Abc, x = 1.0000, y = 10.21, width = 0.311, height = 84.92
+			],
+			[
+				name = DEF, x = 100.432143, y = 1020, width = 4892, height = 84
+			],
+			[
+				name = chI, x = 10.0, y = 1020, width = 48.92, height = 840
+			]
+		}
+	]
+}

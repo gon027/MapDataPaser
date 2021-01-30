@@ -116,22 +116,22 @@ namespace MapParser {
 				else if (token.tokenType == MapParser::TokenType::X) {
 					_rt.getToken();
 					token = _rt.getToken();
-					md.x = std::stoi(token.data);
+					md.x = std::stof(token.data);
 				}
 				else if (token.tokenType == MapParser::TokenType::Y) {
 					_rt.getToken();
 					token = _rt.getToken();
-					md.y = std::stoi(token.data);
+					md.y = std::stof(token.data);
 				}
 				else if (token.tokenType == MapParser::TokenType::Width) {
 					_rt.getToken();
 					token = _rt.getToken();
-					md.width = std::stoi(token.data);
+					md.width = std::stof(token.data);
 				}
 				else if (token.tokenType == MapParser::TokenType::Height) {
 					_rt.getToken();
 					token = _rt.getToken();
-					md.height = std::stoi(token.data);
+					md.height = std::stof(token.data);
 				}
 				else {
 					continue;
