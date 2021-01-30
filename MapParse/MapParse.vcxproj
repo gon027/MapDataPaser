@@ -140,12 +140,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="MapData.cpp" />
-    <ClCompile Include="MapParse.cpp" />
+    <ClCompile Include="MapParser.cpp" />
     <ClCompile Include="RegexToken.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="Test.txt" />
-    <Text Include="test_matdata.txt" />
+    <ClCompile Include="Test\main.cpp" />
+    <ClCompile Include="Test\Test_Main.cpp" />
+    <ClCompile Include="Test\Test_Main2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MapData.h" />
@@ -153,6 +152,12 @@
     <ClInclude Include="RegexToken.h" />
     <ClInclude Include="Token.h" />
     <ClInclude Include="MapFile.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="sample\Test.txt" />
+    <Text Include="sample\Test3.txt" />
+    <Text Include="sample\Test4.txt" />
+    <Text Include="Test2.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

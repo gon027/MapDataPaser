@@ -32,6 +32,7 @@ namespace MapParser {
 			std::regex("^name"),
 			std::regex("^x"),
 			std::regex("^y"),
+			std::regex("^[a-zA-Z]+"),       // •¶Žš—ñ
 		};
 
 		/// <summary>

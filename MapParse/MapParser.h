@@ -1,19 +1,10 @@
 #pragma once
 
-namespace MapParser {
+#include <vector>
 
-	struct MapID;
-	struct MapSize;
-	struct MapField;
-	struct MapObject;
+namespace MapParser {
 	class MapData;
 	class RegexToken;
 
-	struct Parser{
-		static MapID parseMapID(const RegexToken& _rt);
-		static MapSize parseMapSize(const RegexToken& _rt);
-		static MapField parseMapField(const RegexToken& _rt);
-		static MapObject parseMapObject(const RegexToken& _rt);
-		static MapData parseMapData(const RegexToken& _rt);
-	};
+	std::vector<MapData> createMapData(RegexToken& _rt);
 }
