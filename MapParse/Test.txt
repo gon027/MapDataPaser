@@ -1,4 +1,23 @@
-aiueo
-  kakikukeko
-   sasisuseso
-na  n  i nuneno
+{
+	[
+		mapID=1,
+		mapWide={
+			[width=100,height=100]
+		},
+		mapData={
+			0, 2, 10, 100, 1000, 99
+		},
+		mapObject=
+		{
+			[ 
+				name = 12, x = 100, y = 1020, width = 4892, height = 84
+			],
+			[
+				name = 12, x = 100, y = 1020, width = 4892, height = 84
+			],
+			[
+				name = 12, x = 100, y = 1020, width = 4892, height = 84
+			]
+		}
+	]
+}
