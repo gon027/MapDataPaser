@@ -103,7 +103,6 @@ namespace MapParser {
 				return {};
 			}
 
-
 			MapParser::MapInfo md{};
 			while (token.tokenType != MapParser::TokenType::RightBrackets) {
 				token = _rt.getToken();

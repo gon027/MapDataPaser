@@ -8,7 +8,7 @@
 #include "../MapParser.h"
 using namespace std;
 
-int main() {
+/*int main() {
 	auto str = MapParser::readMapFile("sample/Test5.txt");
 	cout << str << endl;
 	MapParser::RegexToken rt(str);
@@ -27,5 +27,6 @@ int main() {
 	cout << test2.getToken().data << endl;
 	cout << test3.getToken().data << endl;
 	cout << test4.getToken().data << endl;
-	*/
+	
 }
+*/

@@ -27,6 +27,9 @@ namespace MapParser {
 		std::vector<std::string> data;
 	};
 
+	/// <summary>
+	/// オブジェクトのデータ情報
+	/// </summary>
 	struct MapInfo {
 		std::string name;
 		float x;
