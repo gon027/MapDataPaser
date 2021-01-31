@@ -52,6 +52,11 @@ namespace MapParser {
 
 		void debug();
 
+		MapID& getMapID();
+		MapSize& getMapSize();
+		MapField& getMapField();
+		MapObject& getMapObject();
+
 	private:
 		MapID mapID;
 		MapSize mapSize;

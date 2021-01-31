@@ -38,4 +38,24 @@ namespace MapParser {
 		}
 		cout << endl;
 	}
+
+	MapID& MapData::getMapID()
+	{
+		return mapID;
+	}
+
+	MapSize& MapData::getMapSize()
+	{
+		return mapSize;
+	}
+
+	MapField& MapData::getMapField()
+	{
+		return mapField;
+	}
+
+	MapObject& MapData::getMapObject()
+	{
+		return mapObject;
+	}
 }

@@ -7,8 +7,10 @@
 #include "MapData.h"
 #include "MapFile.h"
 #include "MapParser.h"
+#include "MapFileWriter.h"
 using namespace std;
 
+/*
 char newl = '\n';
 
 struct Data {
@@ -58,9 +60,13 @@ void writeMapSize(MapParser::MapSize& _mapSize, string& _str) {
 	_str << "		"     << "]" << "," << newl;
 }
 
-void writeMapField(MapParser::MapField& _mapField, size_t width, size_t height, string& _str) {
+void writeMapField(MapParser::MapField& _mapField, MapParser::MapSize _mapSize, string& _str) {
 	_str << "		" << "mapField = " << newl;
 	_str << "		" << "{" << newl;
+
+	const size_t size = _mapSize.height * _mapSize.width;
+	const size_t width = _mapSize.width;
+	const size_t height = _mapSize.height;
 
 	for (size_t y = 0; y < height; ++y) {
 		_str << "			";
@@ -73,7 +79,7 @@ void writeMapField(MapParser::MapField& _mapField, size_t width, size_t height, 
 			}
 		}
 
-		if (y != (5 - 1)) {
+		if (y != (size - 1)) {
 			_str << newl;
 		}
 	}
@@ -102,127 +108,46 @@ void writeMapObject(MapParser::MapObject& _mapObject, string& _str) {
 	_str << newl << "		" << "}" << newl;
 }
 
-void writeMap(MapParser::MapData _mapData) {
-	string line;
+void writeMap(MapParser::MapData& _mapData, string& _str) {
+	_str << "	" << "[" << newl;
+	writeMapID(_mapData.getMapID(), _str);
+	writeMapSize(_mapData.getMapSize(), _str);
+	writeMapField(_mapData.getMapField(), _mapData.getMapSize(), _str);
+	writeMapObject(_mapData.getMapObject(), _str);
+	_str << "	" << "]";
+}
 
-	line << "{" << newl;
+void saveMapFile(vector<MapParser::MapData>& _mapList) {
+	string str;
 
-	// ‚±‚±‚©‚ç‘‚«o‚·
-	line << "	" << "[" << newl;
+	str << "{" << newl;
 
-	/*
-	{
-		line << "		" << "mapID = " << 1 << "," << newl;
+	for (size_t i{ 0 }; i < _mapList.size(); ++i) {
+		writeMap(_mapList[i], str);
+
+		if (i != (_mapList.size() - 1)) {
+			str << ',' << newl;
+		}
 	}
-	*/
+
+	str << newl << "}" << newl;
+
+	cout << str << endl;
+}
+*/
+
+int main() {
+	vector<MapParser::MapData> d_e;
 
 	MapParser::MapID md{ 1 };
-	writeMapID(md, line);
-
-	/*
-	{
-		line << "		" << "mapSize = " << newl;
-
-		{
-			line << "		" << "[" << newl;
-			{
-				line << "			" << "width = " << 100 << "," << newl;
-				line << "			" << "height = " << 100 << newl;
-			}
-			line << "		" << "]" << "," << newl;
-		}
-	}
-	*/
-
 	MapParser::MapSize ms{ 5, 5 };
-	writeMapSize(ms, line);
-
-
-	/*
+	MapParser::MapField mf{
 	{
-		line << "		" << "mapField = " << newl;
-
-		line << "		" << "{" << newl;
-
-		{
-
-			vector<int> vec{
-				1, 2, 3, 4, 5,
-				6, 7, 8, 9, 10,
-				11, 12, 13, 14, 15,
-				16, 17, 18, 19, 20,
-				21, 22, 23, 24, 25
-			};
-
-			for (size_t y = 0; y < 5; ++y) {
-				line << "			";
-				for (size_t x = 0; x < 5; ++x) {
-					size_t index = x + 5 * y;
-					line << vec[index];
-
-					if (index < (5 * 5 - 1)) {
-						line << ", ";
-					}
-				}
-
-				if (y != (5 - 1)) {
-					line << newl;
-				}
-			}
-		}
-
-		line << newl;
-		line << "		" << "}" << "," << newl;
+		"1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
+		"1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
+		"1", "2", "3", "4", "5"
 	}
-	*/
-
-	MapParser::MapField mf{ 
-		{
-			"1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
-			"1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
-			"1", "2", "3", "4", "5"
-		}
 	};
-	writeMapField(mf, ms.width, ms.height, line);
-
-	/*
-	{
-		line << "		" << "mapObject = " << newl;
-		line << "		" << "{" << newl;
-
-		{
-			vector<Data> vec{
-				{"test1", 0, 0, 0, 0},
-				{"test2", 1, 1, 1, 1},
-				{"test3", 2, 2, 2, 2},
-				{"test4", 3, 3, 3, 3},
-				{"test5", 4, 4, 4, 4},
-			};
-
-			for (size_t i{ 0 }; i < 5; ++i) {
-				line << "			" << "[";
-
-				line << " name = " << vec[i].name << ", "
-					<< "x = " << vec[i].x << ", "
-					<< "y = " << vec[i].y << ", "
-					<< "width = " << vec[i].width << ", "
-					<< "height = " << vec[i].height << " ";
-
-
-				line << "]";
-
-				if (i != (5 - 1)) {
-					line << "," << newl;
-				}
-			}
-
-			line << newl;
-		}
-
-		line << "		" << "}" << newl;
-	}
-		
-	*/
 
 	MapParser::MapObject mo{};
 	mo.objects.emplace_back(MapParser::MapInfo{ "111", 1, 2, 3, 4 });
@@ -230,22 +155,14 @@ void writeMap(MapParser::MapData _mapData) {
 	mo.objects.emplace_back(MapParser::MapInfo{ "111", 1, 2, 3, 4 });
 	mo.objects.emplace_back(MapParser::MapInfo{ "111", 1, 2, 3, 4 });
 	mo.objects.emplace_back(MapParser::MapInfo{ "111", 1, 2, 3, 4 });
-	writeMapObject(mo, line);
 
-	line << "	" << "]";
+	MapParser::MapData a{ md,ms,mf,mo };
+	d_e.emplace_back(a);
+	d_e.emplace_back(a);
+	d_e.emplace_back(a);
+	//writeMap(a);
+	//saveMapFile(d_e);
 
-	/*
-	if (d != (2 - 1)) {
-		line << "," << newl;
-	}*/
-
-
-	line << newl << "}" << newl;
-
-	std::cout << line << std::endl;
-}
-
-int main() {
-	MapParser::MapData a{ {},{},{},{} };
-	writeMap(a);
+	MapParser::MapFileWriter mfw{ "sample/OutTest.txt" };
+	mfw.saveMapFile(d_e);
 }
