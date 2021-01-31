@@ -2,10 +2,10 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include "MapFile.h"
 #include "Token.h"
 #include "RegexToken.h"
 #include "MapData.h"
-#include "MapFile.h"
 #include "MapParser.h"
 #include "MapFileWriter.h"
 using namespace std;
