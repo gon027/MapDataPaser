@@ -42,6 +42,6 @@ int main(){
   MapParser::MapFileWriter mapFileWriter{"FilePath"};
 
   // マップデータを保存する
-  mapFileWriter.saveMap(mapList);
+  mapFileWriter.saveMapFile(mapList);
 }
 ```
