@@ -139,22 +139,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="MapData.cpp" />
-    <ClCompile Include="MapFileReader.cpp" />
-    <ClCompile Include="MapFileWriter.cpp" />
-    <ClCompile Include="RegexToken.cpp" />
+    <ClCompile Include="MapParser\MapData.cpp" />
+    <ClCompile Include="MapParser\MapFileReader.cpp" />
+    <ClCompile Include="MapParser\MapFileWriter.cpp" />
+    <ClCompile Include="MapParser\RegexToken.cpp" />
     <ClCompile Include="Test\main.cpp" />
     <ClCompile Include="Test\Test_Main.cpp" />
     <ClCompile Include="Test\Test_Main2.cpp" />
     <ClCompile Include="Test_Main3.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="MapData.h" />
-    <ClInclude Include="MapFileReader.h" />
-    <ClInclude Include="MapFileWriter.h" />
-    <ClInclude Include="RegexToken.h" />
-    <ClInclude Include="Token.h" />
-    <ClInclude Include="MapFile.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="outTest.txt" />
@@ -167,6 +159,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MapFileReader.h" />
+    <ClInclude Include="MapFileWriter.h" />
+    <ClInclude Include="MapParser\MapData.h" />
+    <ClInclude Include="MapParser\MapFile.h" />
+    <ClInclude Include="MapParser\RegexToken.h" />
+    <ClInclude Include="MapParser\Token.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

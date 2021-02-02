@@ -1,4 +1,4 @@
-#include "MapFileWriter.h"
+#include "../MapFileWriter.h"
 #include "MapData.h"
 #include <fstream>
 #include <iostream>

@@ -2,7 +2,7 @@
 
 #include <string>
 #include <vector>
-#include "MapData.h"
+#include "MapParser/MapData.h"
 
 namespace MapFileReader {
 

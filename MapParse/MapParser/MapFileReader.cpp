@@ -1,4 +1,4 @@
-#include "MapFileReader.h"
+#include "../MapFileReader.h"
 #include "RegexToken.h"
 #include "MapData.h"
 #include "Token.h"
