@@ -2,11 +2,13 @@
 #include <fstream>
 #include <string>
 #include <vector>
+
 #include "MapFile.h"
 #include "Token.h"
 #include "RegexToken.h"
 #include "MapData.h"
-#include "MapParser.h"
+#include "MapFileWriter.h"
+#include "MapFileReader.h"
 #include "MapFileWriter.h"
 using namespace std;
 
@@ -136,6 +138,7 @@ void saveMapFile(vector<MapParser::MapData>& _mapList) {
 }
 */
 
+/*
 int main() {
 	vector<MapParser::MapData> d_e;
 
@@ -166,3 +169,4 @@ int main() {
 	MapParser::MapFileWriter mfw{ "sample/OutTest.txt" };
 	mfw.saveMapFile(d_e);
 }
+*/

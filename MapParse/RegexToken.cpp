@@ -21,7 +21,7 @@ namespace MapParser {
 			std::regex("^\\["),
 			std::regex("^\\]"),
 			std::regex("^mapID"),
-			std::regex("^mapWide"),
+			std::regex("^mapSize"),
 			std::regex("^mapData"),
 			std::regex("^mapObject"),
 			std::regex("^,"),

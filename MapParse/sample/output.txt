@@ -1,16 +1,13 @@
 {
 	[
-		mapID = 1,
+		mapID = -1,
 		mapSize = 
 		[
-			width = 2,
-			height = 3
+			width = 0,
+			height = 0
 		],
 		mapField = 
 		{
-			0, 2, 
-			10, 100, 
-			1000, 99
 
 		},
 		mapObject = 
@@ -21,17 +18,14 @@
 		}
 	],
 	[
-		mapID = 1,
+		mapID = -1,
 		mapSize = 
 		[
-			width = 2,
-			height = 3
+			width = 0,
+			height = 0
 		],
 		mapField = 
 		{
-			0, 2, 
-			10, 100, 
-			1000, 99
 
 		},
 		mapObject = 
@@ -42,17 +36,14 @@
 		}
 	],
 	[
-		mapID = 1,
+		mapID = -1,
 		mapSize = 
 		[
-			width = 2,
-			height = 3
+			width = 0,
+			height = 0
 		],
 		mapField = 
 		{
-			0, 2, 
-			10, 100, 
-			1000, 99
 
 		},
 		mapObject = 
@@ -63,17 +54,14 @@
 		}
 	],
 	[
-		mapID = 1,
+		mapID = -1,
 		mapSize = 
 		[
-			width = 2,
-			height = 3
+			width = 0,
+			height = 0
 		],
 		mapField = 
 		{
-			0, 2, 
-			10, 100, 
-			1000, 99
 
 		},
 		mapObject = 
@@ -84,17 +72,14 @@
 		}
 	],
 	[
-		mapID = 1,
+		mapID = -1,
 		mapSize = 
 		[
-			width = 2,
-			height = 3
+			width = 0,
+			height = 0
 		],
 		mapField = 
 		{
-			0, 2, 
-			10, 100, 
-			1000, 99
 
 		},
 		mapObject = 

@@ -2,22 +2,14 @@
 
 #include <vector>
 #include <string>
-#include <fstream>
-#include "MapData.h"
+
 
 namespace MapParser {
+	class MapData;
+}
 
-	using MapList = std::vector<MapData>;
+namespace MapFileWriter {
+	using MapList = std::vector<MapParser::MapData>;
 
-	class MapFileWriter {
-	public:
-		MapFileWriter(const std::string& _outputFile);
-		~MapFileWriter() = default;;
-
-		void saveMapFile(MapList& _mapList);
-
-	private:
-		std::ofstream ofStream;
-		MapList mapDataList;
-	};
+	void saveMapFile(const std::string& _filePath, MapList& _mapList);
 }

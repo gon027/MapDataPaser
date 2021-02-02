@@ -5,7 +5,7 @@
 
 namespace MapParser {
 
-	inline std::string readMapFile(const std::string& _file) {
+	static std::string readMapFile(const std::string& _file) {
 		std::fstream file(_file);
 		if (!file) {
 			std::cout << "Read Error" << std::endl;

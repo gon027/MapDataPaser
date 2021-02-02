@@ -1,11 +1,6 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "../Token.h"
-#include "../RegexToken.h"
-#include "../MapData.h"
-#include "../MapFile.h"
-#include "../MapParser.h"
 using namespace std;
 
 /*

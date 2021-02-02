@@ -1,7 +1,9 @@
 #include "MapFileWriter.h"
+#include "MapData.h"
+#include <fstream>
 #include <iostream>
 
-namespace MapParser {
+namespace MapFileWriter {
 
 	namespace {
 
@@ -101,30 +103,29 @@ namespace MapParser {
 		}
 	}
 
-	MapFileWriter::MapFileWriter(const std::string& _outputFile)
-		: ofStream(_outputFile)
+	void MapFileWriter::saveMapFile(const std::string& _filePath, MapList& _mapList)
 	{
-		if (!ofStream) {
-			// ÉGÉâÅ[
+		std::ofstream file{ _filePath };
+		if (!file) {
+			std::cout << "Error" << std::endl;
+			return;
 		}
-	}
 
-	void MapFileWriter::saveMapFile(MapList& _mapList)
-	{
 		std::string str;
 		str << "{" << newl;
 
 		for (size_t i{ 0 }; i < _mapList.size(); ++i) {
 			writeMap(_mapList[i], str);
-
+			
 			if (i != (_mapList.size() - 1)) {
 				str << ',' << newl;
 			}
-		}
+		}		
+
 		str << newl << "}" << newl;
 
-		std::cout << str << std::endl;
+		// std::cout << str << std::endl;
 
-		ofStream << str;
+		file << str;
 	}
 }

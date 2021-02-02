@@ -4,11 +4,6 @@
 #include <regex>
 #include <vector>
 #include <chrono>
-#include "../Token.h"
-#include "../RegexToken.h"
-#include "../MapData.h"
-#include "../MapFile.h"
-#include "../MapParser.h"
 using namespace std;
 using namespace chrono;
 

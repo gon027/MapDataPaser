@@ -140,8 +140,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="MapData.cpp" />
+    <ClCompile Include="MapFileReader.cpp" />
     <ClCompile Include="MapFileWriter.cpp" />
-    <ClCompile Include="MapParser.cpp" />
     <ClCompile Include="RegexToken.cpp" />
     <ClCompile Include="Test\main.cpp" />
     <ClCompile Include="Test\Test_Main.cpp" />
@@ -150,7 +150,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MapData.h" />
-    <ClInclude Include="MapParser.h" />
+    <ClInclude Include="MapFileReader.h" />
     <ClInclude Include="MapFileWriter.h" />
     <ClInclude Include="RegexToken.h" />
     <ClInclude Include="Token.h" />
