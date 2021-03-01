@@ -16,8 +16,8 @@ namespace MapParser {
 		LeftBrackets,    // 左括弧
 		RightBrackets,   // 右括弧
 		MapID,           // マップID
-		MapWide,         // マップの広さ
-		MapData,         // マップデータ
+		MapSize,         // マップの広さ
+		MapField,         // マップデータ
 		MapObject,       // マップのオブジェクト
 		Comma,           // カンマ
 		Equal,           // イコール 

@@ -15,14 +15,13 @@ namespace MapParser {
 		{
 			std::regex("^(\\s|\\t)"),       // ‹ó”’‚©ƒ^ƒu
 			std::regex("^\\d+(\\.\\d+)?"),  // ®”‚Ü‚½‚Í¬”
-			//std::regex("^\\d+"),          // ”š
 			std::regex("^\\{"),
 			std::regex("^\\}"),
 			std::regex("^\\["),
 			std::regex("^\\]"),
 			std::regex("^mapID"),
 			std::regex("^mapSize"),
-			std::regex("^mapData"),
+			std::regex("^mapField"),
 			std::regex("^mapObject"),
 			std::regex("^,"),
 			std::regex("^="),
@@ -50,8 +49,8 @@ namespace MapParser {
 				{"[",         MapParser::TokenType::LeftBrackets},
 				{"]",         MapParser::TokenType::RightBrackets},
 				{"mapID",     MapParser::TokenType::MapID},
-				{"mapWide",   MapParser::TokenType::MapWide},
-				{"mapData",   MapParser::TokenType::MapData},
+				{"mapSize",   MapParser::TokenType::MapSize},
+				{"mapField",  MapParser::TokenType::MapField},
 				{"mapObject", MapParser::TokenType::MapObject},
 				{",",         MapParser::TokenType::Comma},
 				{"=",         MapParser::TokenType::Equal},

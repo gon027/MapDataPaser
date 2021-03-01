@@ -20,14 +20,15 @@ namespace MapParser {
 		cout << "--- Debug ---" << endl;
 
 		cout << "ID = " << mapID.id << endl;
-		cout << "Size = " << mapSize.width << " : " << mapSize.height << endl;
-		cout << "--- Field ---" << endl;
+		cout << "Size = [ " << mapSize.width << " : " << mapSize.height <<  " ]" << endl;
+		cout << "Field " << endl;
 		for (auto& e : mapField.data) {
 			cout << e << ", ";
 		}
 		cout << endl;
 
-		cout << "--- Objects ---" << endl;
+		cout << "Map Objects" << endl;
+		cout << "----------" << endl;
 		for (auto& e : mapObject.objects) {
 			cout << "Name = "   << e.name << endl;
 			cout << "X = "      << e.x << endl;
@@ -36,7 +37,8 @@ namespace MapParser {
 			cout << "Height = " << e.height << endl;
 			cout << "----------" << endl;
 		}
-		cout << endl;
+		//cout << "----------" << endl;
+		//cout << endl;
 	}
 
 	MapID& MapData::getMapID()

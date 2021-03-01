@@ -44,29 +44,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="sample\Test.txt">
-      <Filter>リソース ファイル</Filter>
-    </Text>
-    <Text Include="Test2.txt">
-      <Filter>リソース ファイル</Filter>
-    </Text>
-    <Text Include="sample\Test3.txt">
-      <Filter>リソース ファイル</Filter>
-    </Text>
-    <Text Include="sample\Test4.txt">
-      <Filter>リソース ファイル</Filter>
-    </Text>
-    <Text Include="sample\Test5.txt">
-      <Filter>リソース ファイル</Filter>
-    </Text>
-    <Text Include="outTest.txt">
-      <Filter>リソース ファイル</Filter>
-    </Text>
-    <Text Include="sample\OutTest.txt">
-      <Filter>リソース ファイル</Filter>
-    </Text>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="..\Readme.md">
       <Filter>リソース ファイル</Filter>
     </None>
@@ -90,5 +67,13 @@
     <ClInclude Include="MapParser\Token.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="data\input.txt">
+      <Filter>リソース ファイル</Filter>
+    </Text>
+    <Text Include="data\output.txt">
+      <Filter>リソース ファイル</Filter>
+    </Text>
   </ItemGroup>
 </Project>

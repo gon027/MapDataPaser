@@ -1,4 +1,4 @@
-#include <iostream>
+/*#include <iostream>
 #include <string>
 #include <vector>
 #include "../MapFileReader.h"
@@ -14,3 +14,4 @@ int main() {
 
 	MapFileWriter::saveMapFile("sample/output.txt", m);
 }
+*/

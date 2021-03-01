@@ -124,7 +124,7 @@ namespace MapFileWriter {
 
 		str << newl << "}" << newl;
 
-		// std::cout << str << std::endl;
+		//std::cout << str << std::endl;
 
 		file << str;
 	}

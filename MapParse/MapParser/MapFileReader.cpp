@@ -4,6 +4,8 @@
 #include "Token.h"
 #include "MapFile.h"
 #include <fstream>
+#include <iostream>
+using namespace std;
 
 namespace MapFileReader {
 
@@ -27,7 +29,7 @@ namespace MapFileReader {
 		MapParser::MapSize parseMapSize(MapParser::RegexToken& _rt) {
 			auto token = _rt.getToken();
 
-			if (token.tokenType != MapParser::TokenType::MapWide) {
+			if (token.tokenType != MapParser::TokenType::MapSize) {
 				return { 0, 0 };
 			}
 
@@ -36,29 +38,25 @@ namespace MapFileReader {
 
 			_rt.getToken();
 			token = _rt.getToken();
-			if (token.tokenType == MapParser::TokenType::LeftHookBrack) {
+
+			if (token.tokenType == MapParser::TokenType::LeftBrackets) {
 				token = _rt.getToken();
 
-				if (token.tokenType == MapParser::TokenType::LeftBrackets) {
-					token = _rt.getToken();
-
-					if (token.tokenType == MapParser::TokenType::Width) {
-						_rt.getToken();
-						auto widthToken = _rt.getToken();
-
-						width = std::stoi(widthToken.data);
-					}
-
+				if (token.tokenType == MapParser::TokenType::Width) {
 					_rt.getToken();
-					token = _rt.getToken();
-					if (token.tokenType == MapParser::TokenType::Height) {
-						_rt.getToken();
-						auto heightToken = _rt.getToken();
+					auto widthToken = _rt.getToken();
 
-						height = std::stoi(heightToken.data);
-					}
+					width = std::stoi(widthToken.data);
 				}
+
 				_rt.getToken();
+				token = _rt.getToken();
+				if (token.tokenType == MapParser::TokenType::Height) {
+					_rt.getToken();
+					auto heightToken = _rt.getToken();
+
+					height = std::stoi(heightToken.data);
+				}
 			}
 			_rt.getToken();
 
@@ -67,9 +65,9 @@ namespace MapFileReader {
 
 		// 文字列からMapFieldを解析する
 		MapParser::MapField parseMapField(MapParser::RegexToken& _rt) {
-			auto token = _rt.getToken();
 
-			if (token.tokenType != MapParser::TokenType::MapData) {
+			auto token = _rt.getToken();
+			if (token.tokenType != MapParser::TokenType::MapField) {
 				return {};
 			}
 
@@ -167,13 +165,13 @@ namespace MapFileReader {
 				while (token.tokenType != MapParser::TokenType::RightBrackets) {
 
 					mapId = parseMapID(_rt);
-					_rt.getToken();
+					_rt.getToken();   // カンマを外す
 
 					mapSize = parseMapSize(_rt);
-					_rt.getToken();
+					_rt.getToken();   // カンマを外す
 
 					mapField = parseMapField(_rt);
-					_rt.getToken();
+					_rt.getToken();   // カンマを外す
 
 					mapObject = parseMapObject(_rt);
 

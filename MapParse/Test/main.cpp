@@ -1,41 +1,80 @@
 ﻿#include <iostream>
-#include <fstream>
 #include <string>
-#include <regex>
 #include <vector>
-#include <chrono>
-using namespace std;
-using namespace chrono;
+#include "../MapParser/Token.h"
+#include "../MapParser/MapFile.h"
+#include "../MapParser/MapData.h"
+#include "../MapFileReader.h"
+#include "../MapFileWriter.h"
 
-/**
-int main()
-{
-	/*
-	MapPaser::RegexToken rt{ "{mapWide=[width=10,height=11]}" };
-	MapPaser::RegexToken rt{ "{mapWide={0, 2, 10, 100, 1000, 99}}" };
-	MapPaser::RegexToken rt{ "{mapObject={[name=10,x=120,y=130,width=300,height=499],[name=20,x=120,y=130,width=300,height=499],[name=20,x=12220,y=13220,width=32200,height=49229]}}" };
-	MapParser::RegexToken rt{
-		"{[mapID=1,mapWide={[width=100,height=100]},mapData={560,2,10,100,1000,99,0,0,0,9},mapObject={[name=123,x=12,y=123,width=90,height=948],[name=123,x=12,y=123,width=90,height=948]}]}"
+// マップを読み込む用のデバッグ関数
+void test_readMap() {
+	// マップファイルを読み込む
+	auto mapList = MapFileReader::readMapFile("data/input.txt");
+
+	// デバッグ用
+	for (auto& map : mapList) {
+		map.debug();
+	}
+}
+
+// マップに書き込む用のデバッグ関数
+void test_writeMap() {
+	// マップIDの作成
+	MapParser::MapID mapID{ 1 };
+
+	// マップサイズの作成
+	MapParser::MapSize mapSize{ 5, 5 };
+
+	// マップのフィールドの作成
+	// 注意 : マップのフィールドは、mapSizeの大きさでなければならない
+	MapParser::MapField mapField{
+		{ 
+			"1", "2", "3", "4", "5",
+			"6", "7", "8", "9", "10",
+			"11", "12", "13", "14", "15",
+			"16", "17", "18", "19", "20",
+			"21", "22", "23", "24", "25"
+		}
 	};
 
-	system_clock::time_point start, end;
-	start = system_clock::now();
+	// マップに配置するオブジェクトを作成
+	MapParser::MapObject mapObject{
+		{
+			{ "object1", 100.0, 100.0, 50.0, 50.0 },
+			{ "object2", 200.0, 200.0, 50.0, 50.0 },
+			{ "object3", 300.0, 300.0, 50.0, 50.0 },
+			{ "object4", 400.0, 400.0, 50.0, 50.0 },
+		}
+	};
 
-	auto createMapData = MapParser::readMapFile("sample/Test4.txt");
-	cout << createMapData << endl;
+	// MapDataの作成
+	MapParser::MapData map{
+		mapID, mapSize, mapField, mapObject
+	};
 
-	MapParser::RegexToken rt{ createMapData };
-	auto aa = MapParser::createMapData(rt);
+	// マップID(2つめを作成)
+	MapParser::MapID mapID1{ 2 };
 
-	end = system_clock::now();
-	auto elapsed = duration_cast<milliseconds>(end - start).count();
+	// MapDataの作成
+	MapParser::MapData map1{
+		mapID1, mapSize, mapField, mapObject
+	};
 
-	cout << (elapsed / 1000.0) << endl;
+	// 作成したMapDataをMapListに登録
+	MapFileWriter::MapList mapList{
+		map, map1
+	};
 
-	for (auto& r : aa) {
-		r.debug();
-	}
+	// マップを書き出す
+	MapFileWriter::saveMapFile("data/output.txt", mapList);
+}
+
+int main()
+{
+	test_readMap();
+
+	//test_writeMap();
 
 	return 0;
 }
-*/

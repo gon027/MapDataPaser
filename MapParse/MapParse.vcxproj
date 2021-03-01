@@ -149,15 +149,6 @@
     <ClCompile Include="Test_Main3.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="outTest.txt" />
-    <Text Include="sample\OutTest.txt" />
-    <Text Include="sample\Test.txt" />
-    <Text Include="sample\Test3.txt" />
-    <Text Include="sample\Test4.txt" />
-    <Text Include="sample\Test5.txt" />
-    <Text Include="Test2.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="..\Readme.md" />
   </ItemGroup>
   <ItemGroup>
@@ -167,6 +158,10 @@
     <ClInclude Include="MapParser\MapFile.h" />
     <ClInclude Include="MapParser\RegexToken.h" />
     <ClInclude Include="MapParser\Token.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="data\input.txt" />
+    <Text Include="data\output.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
